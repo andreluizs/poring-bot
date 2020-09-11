@@ -1,0 +1,21 @@
+{
+  "editor.formatOnSave": false,
+  "explorer.openEditors.visible": 0,
+  "editor.renderWhitespace": "all",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": false
+  },
+  "editor.rulers": [100],
+  "editor.renderLineHighlight": "gutter",
+  "eslint.alwaysShowStatus": true,
+  "eslint.validate": ["javascript"],
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}
