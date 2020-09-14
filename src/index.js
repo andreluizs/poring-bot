@@ -23,6 +23,8 @@ Object.keys(botCommands).map((key) => {
   client.commands.set(botCommands[key].name, botCommands[key]);
 });
 
+client.on('ready', () => {});
+
 client.on('message', (message) => {
   if (message.author.bot || !message.content.startsWith(prefix)) return;
 
@@ -38,11 +40,16 @@ client.on('message', (message) => {
   if (!command) return;
 
   try {
-    command.execute(message, args);
+    command.run(message, args, client);
   } catch (error) {
     console.error(error);
-    message.reply('there was an error trying to execute that command!');
+    message.reply(
+      'Ocorreu um erro ao executar o comando, entre em contato com algum administrador.'
+    );
   }
 });
+
+client.on('guildMemberAdd', () => {});
+client.on('guildMemberRemove', () => {});
 
 client.login(process.env.TOKEN);
