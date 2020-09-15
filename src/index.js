@@ -23,13 +23,15 @@ Object.keys(botCommands).map((key) => {
   client.commands.set(botCommands[key].name, botCommands[key]);
 });
 
-client.on('ready', () => {});
+client.on('ready', () => {
+  client.user.setActivity('Dormindo');
+});
 
 client.on('message', (message) => {
   if (message.author.bot || !message.content.startsWith(prefix)) return;
 
-  const args = message.content.split(/ +/);
-  const commandName = args.shift().replace(prefix, '').toLowerCase();
+  const args = message.content.slice(prefix.length).trim().split(/ +/);
+  const commandName = args.shift().toLowerCase();
 
   const command =
     client.commands.get(commandName) ||
@@ -40,7 +42,7 @@ client.on('message', (message) => {
   if (!command) return;
 
   try {
-    command.run(message, args, client);
+    command.execute(message, args, client);
   } catch (error) {
     console.error(error);
     message.reply(
