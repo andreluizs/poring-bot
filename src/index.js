@@ -16,6 +16,7 @@ const { Client, Collection } = require('discord.js');
 const client = new Client();
 client.commands = new Collection();
 const prefix = process.env.PREFIX;
+client.prefix = prefix;
 
 const botCommands = require('./commands');
 
@@ -24,7 +25,7 @@ Object.keys(botCommands).map((key) => {
 });
 
 client.on('ready', () => {
-  client.user.setActivity('Dormindo');
+  client.user.setActivity('!help');
 });
 
 client.on('message', (message) => {
